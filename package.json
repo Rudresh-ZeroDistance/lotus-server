@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "dependencies": {
+    "socket.io": "^4.7.5"
+  },
+  "scripts": {
+    "dev": "nodemon ./index.js"
+  }
+}
