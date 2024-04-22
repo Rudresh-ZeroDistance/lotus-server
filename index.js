@@ -1,4 +1,5 @@
-import { Server } from "socket.io"
+const socketIO = require("socket.io")
+const Server = socketIO.Server
 
 const io = new Server(3000, {
     cors: {
@@ -27,17 +28,14 @@ io.on("connection", (socket) => {
             time : Date.now(),
             characters: characters
         })
-    },100)
+    }, 100)
 
     socket.on("updateData", (data) => {
         const index = characters.findIndex(c => c.id === socket.id);
         if (index !== -1) {
-            characters[index].positionX = data.positionX;
-            characters[index].positionZ = data.positionZ;
+            characters[index].position = data.position;
             characters[index].rotation = data.rotation;
         }
-
-        
 
     });
 
